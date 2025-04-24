@@ -35,7 +35,7 @@ library(ipss)
 # Load n-by-p numeric matrix X (features) and numeric response vector y of length n
 
 # run ipss:
-ipss_output <- ipss(X, y)
+ipss_output <- ipss(X,y)
 
 # select features based on target FDR
 target_fdr <- 0.1
@@ -45,7 +45,7 @@ cat(sprintf("Selected features (target FDR = %.1f): %s\n", target_fdr, toString(
 ```
 
 ### Output
-`ipss_output <- ipss(X, y)` is a list containing:
+`ipss_output <- ipss(X,y)` is a list containing:
 - `efp_scores`: Named vector whose names are feature indices and values are efp scores (named numeric vector of length `p`).
 - `q_values`: Named vector whose names are feature indices and values are q-values (named numeric vector of length `p`).
 - `runtime`: Runtime of the algorithm in seconds (numeric).
