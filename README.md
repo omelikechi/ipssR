@@ -1,0 +1,62 @@
+# Integrated Path Stability Selection (IPSS) for R
+
+This R package provides a lightweight wrapper around the Python implementation of Integrated Path Stability Selection (IPSS) — a general and powerful method for feature selection with error control. It enables R users to access IPSS without rewriting the underlying algorithm.
+
+## Associated papers
+
+**IPSSL:** [https://arxiv.org/abs/2403.15877](https://arxiv.org/abs/2403.15877) <br>
+**IPSSGB and IPSSRF:** [https://arxiv.org/abs/2410.02208v1](https://arxiv.org/abs/2410.02208v1)
+
+## Installation
+
+Install the Python IPSS package via pip:
+
+	pip install ipss
+
+Then, in R:
+
+	install.packages("reticulate")
+	library(reticulate)
+
+Install this R package (from GitHub if not on CRAN yet):
+
+	# install.packages("devtools")
+	devtools::install_github("your-github-username/ipss")  # Replace with actual repo
+	library(ipss)
+
+## Usage
+
+```r
+library(ipss)
+
+# Load n-by-p numeric matrix X (features) and numeric response vector y of length n
+
+# run ipss:
+ipss_output <- ipss(X, y)
+
+# select features based on target FDR
+target_fdr <- 0.1
+q_values <- ipss_output$q_values
+selected_features <- as.integer(names(q_values))[q_values <= target_fdr]
+cat(sprintf("Selected features (target FDR = %.1f): %s\n", target_fdr, toString(selected_features)))
+```
+
+### Output
+`ipss_output <- ipss(X, y)` is a list containing:
+- `efp_scores`: Named vector whose names are feature indices and values are efp scores (named numeric vector of length `p`).
+- `q_values`: Named vector whose names are feature indices and values are q-values (named numeric vector of length `p`).
+- `runtime`: Runtime of the algorithm in seconds (numeric).
+- `selected_features`: Indices of features selected by IPSS; empty if `target_fp` and `target_fdr` are not specified (integer vector).
+- `stability_paths`: Estimated selection probabilities at each regularization value (matrix of shape `(n_lambdas, p)`).
+
+
+## Documentation
+
+See the full Python documentation for:
+- Algorithm details
+- Use cases
+- Simulation and real-data examples
+- General recommendations
+
+https://github.com/omelikechi/ipss  
+https://pypi.org/project/ipss
