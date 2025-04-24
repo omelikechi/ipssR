@@ -1,6 +1,7 @@
 # Integrated Path Stability Selection (IPSS) for R
 
-This R package provides a lightweight wrapper around the Python implementation of Integrated Path Stability Selection (IPSS) — a general and powerful method for feature selection with error control. It enables R users to access IPSS without rewriting the underlying algorithm.
+This R package provides a lightweight wrapper around the Python implementation of integrated path stability selection (IPSS), available here:
+[https://github.com/omelikechi/ipss](https://github.com/omelikechi/ipss). It enables R users to access IPSS without rewriting the underlying algorithm.
 
 ## Associated papers
 
@@ -10,19 +11,21 @@ This R package provides a lightweight wrapper around the Python implementation o
 ## Installation
 
 Install the Python IPSS package via pip:
-
-	pip install ipss
+```
+pip install ipss
+```
 
 Then, in R:
+```
+install.packages("reticulate")
+library(reticulate)
+```
 
-	install.packages("reticulate")
-	library(reticulate)
-
-Install this R package (from GitHub if not on CRAN yet):
-
-	# install.packages("devtools")
-	devtools::install_github("your-github-username/ipss")  # Replace with actual repo
-	library(ipss)
+Install this R package:
+```
+devtools::install_github("omelikechi/ipssR")
+library(ipss)
+```
 
 ## Usage
 
@@ -52,11 +55,6 @@ cat(sprintf("Selected features (target FDR = %.1f): %s\n", target_fdr, toString(
 
 ## Documentation
 
-See the full Python documentation for:
-- Algorithm details
-- Use cases
-- Simulation and real-data examples
-- General recommendations
-
-https://github.com/omelikechi/ipss  
-https://pypi.org/project/ipss
+See the full Python documentation:
+- https://github.com/omelikechi/ipss  
+- https://pypi.org/project/ipss
