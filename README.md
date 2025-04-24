@@ -1,7 +1,6 @@
 # Integrated Path Stability Selection (IPSS) for R
 
-This R package provides a lightweight wrapper around the Python implementation of integrated path stability selection (IPSS), available here:
-[https://github.com/omelikechi/ipss](https://github.com/omelikechi/ipss). It enables R users to access IPSS without rewriting the underlying algorithm.
+A lightweight R wrapper for the Python implementation of IPSS ([https://github.com/omelikechi/ipss](https://github.com/omelikechi/ipss)) that enables users to run IPSS in R without writing the algorithm from scratch.
 
 ## Associated papers
 
