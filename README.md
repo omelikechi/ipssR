@@ -4,8 +4,11 @@ A lightweight R wrapper for the Python implementation of IPSS ([https://github.c
 
 ## Associated papers
 
-**IPSSL:** [https://arxiv.org/abs/2403.15877](https://arxiv.org/abs/2403.15877) <br>
-**IPSSGB and IPSSRF:** [https://arxiv.org/abs/2410.02208v1](https://arxiv.org/abs/2410.02208v1)
+- **Integrated path stability selection**  
+  Published in the [*Journal of the American Statistical Association*](https://doi.org/10.1080/01621459.2025.2525589) and available on [arXiv](https://arxiv.org/abs/2403.15877)
+
+- **Nonparametric IPSS: Fast, flexible feature selection with false discovery control**  
+  Published in [*Bioinformatics*](https://doi.org/10.1093/bioinformatics/btaf299) and available on [arXiv](https://arxiv.org/abs/2410.02208)
 
 ## Installation
 
@@ -20,21 +23,21 @@ install.packages("reticulate")
 library(reticulate)
 ```
 
-Install this R package:
+Install ipssR:
 ```
 devtools::install_github("omelikechi/ipssR")
-library(ipss)
+library(ipssR)
 ```
 
 ## Usage
 
 ```r
-library(ipss)
+library(ipssR)
 
 # Load n-by-p numeric matrix X (features) and numeric response vector y of length n
 
 # run ipss:
-ipss_output <- ipss(X,y)
+ipss_output <- ipssR(X,y)
 
 # select features based on target FDR
 target_fdr <- 0.1
@@ -44,7 +47,7 @@ cat(sprintf("Selected features (target FDR = %.1f): %s\n", target_fdr, toString(
 ```
 
 ### Output
-`ipss_output <- ipss(X,y)` is a list containing:
+`ipss_output <- ipssR(X,y)` is a list containing:
 - `efp_scores`: Named vector whose names are feature indices and values are efp scores (named numeric vector of length `p`).
 - `q_values`: Named vector whose names are feature indices and values are q-values (named numeric vector of length `p`).
 - `runtime`: Runtime of the algorithm in seconds (numeric).
