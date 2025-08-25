@@ -37,7 +37,7 @@ library(ipssR)
 # Load n-by-p numeric matrix X (features) and numeric response vector y of length n
 
 # run ipss:
-ipss_output <- ipssR(X,y)
+ipss_output <- ipss(X,y)
 
 # select features based on target FDR
 target_fdr <- 0.1
