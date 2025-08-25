@@ -47,7 +47,7 @@ cat(sprintf("Selected features (target FDR = %.1f): %s\n", target_fdr, toString(
 ```
 
 ### Output
-`ipss_output <- ipssR(X,y)` is a list containing:
+`ipss_output <- ipss(X,y)` is a list containing:
 - `efp_scores`: Named vector whose names are feature indices and values are efp scores (named numeric vector of length `p`).
 - `q_values`: Named vector whose names are feature indices and values are q-values (named numeric vector of length `p`).
 - `runtime`: Runtime of the algorithm in seconds (numeric).
