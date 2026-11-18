@@ -28,11 +28,19 @@ ipss <- function(X, y, ...) {
 	X <- np$array(X)
 	y <- np$array(y)
 	ipss <- reticulate::import("ipss")
-	results <- ipss$ipss(X, y, ...)
+	results <- do.call(ipss$ipss, c(list(X, y), whole_to_integer(list(...))))
 	names(results$efp_scores) <- as.character(as.integer(names(results$efp_scores)) + 1L)
-	names(results$q_values)   <- as.character(as.integer(names(results$q_values)) + 1L)
+	names(results$q_values) <- as.character(as.integer(names(results$q_values)) + 1L)
 	results$selected_features <- as.integer(results$selected_features) + 1L
 	return(results)
+}
+
+# R stores numbers like 50 as doubles, which Python receives as 50.0; convert whole-number scalars
+# (including inside lists such as selector_args) to integers so arguments like B = 50 are accepted
+whole_to_integer <- function(x) {
+	if (is.list(x)) return(lapply(x, whole_to_integer))
+	if (is.double(x) && length(x) == 1 && is.finite(x) && x == round(x) && abs(x) <= .Machine$integer.max) return(as.integer(x))
+	x
 }
 
 
